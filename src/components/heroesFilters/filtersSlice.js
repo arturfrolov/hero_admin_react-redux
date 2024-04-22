@@ -3,12 +3,6 @@ import {useHttp} from "../../hooks/http.hook";
 
 const filtersAdapter = createEntityAdapter();
 
-// const initialState = {
-//     filters: [],
-//     filtersLoadingStatus: 'idle',
-//     activeFilter: 'all'
-// }
-
 const initialState = filtersAdapter.getInitialState({
     filtersLoadingStatus: 'idle',
     activeFilter: 'all'
@@ -37,7 +31,6 @@ const filtersSlice  = createSlice({
             })
             .addCase(fetchFilters.fulfilled, (state, action) => {
                 state.filtersLoadingStatus = 'idle';
-                // state.filters = action.payload;
                 filtersAdapter.setAll(state, action.payload);
             })
             .addCase(fetchFilters.rejected, (state, action) => {
